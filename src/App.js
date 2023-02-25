@@ -30,6 +30,7 @@ function App() {
                 path="new"
                 element={<New inputs={userInputs} title="Add New User" />}
               />
+              <Route path="verify" element={<Verify />} />
             </Route>
             <Route path="trips">
               <Route index element={<Trip />} />
