@@ -12,6 +12,7 @@ const Home = () => {
       <Sidebar />
       <div className="homeContainer">
         <Navbar />
+        <div className="datatableTitle">Dashboard</div>
         <div className="widgets">
           <Widget type="user" />
           <Widget type="route" />
