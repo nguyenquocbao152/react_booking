@@ -1,5 +1,4 @@
 import TripTable from "../../components/datatable/TripTable";
-import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Trip.scss";
 const Trip = () => {
@@ -7,7 +6,6 @@ const Trip = () => {
     <div className="list">
       <Sidebar />
       <div className="listContainer">
-        <Navbar />
         <TripTable />
       </div>
     </div>

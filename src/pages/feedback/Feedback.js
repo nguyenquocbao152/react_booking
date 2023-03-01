@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import FeedbackTable from "../../components/datatable/Feedbacktable";
-import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Feedback.scss";
 const Feedback = () => {
@@ -8,7 +6,6 @@ const Feedback = () => {
     <div className="list">
       <Sidebar />
       <div className="listContainer">
-        <Navbar />
         <FeedbackTable />
       </div>
     </div>

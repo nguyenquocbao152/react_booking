@@ -2,7 +2,6 @@ import { SearchOutlined } from "@mui/icons-material";
 import { format, parseISO } from "date-fns";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import { Link } from "react-router-dom";
 import TripForm from "../form/TripForm";
 import Popup from "../popup/Popup";
 const URL = "http://localhost:8080/trip/getAllTrip";
@@ -81,11 +80,11 @@ const TripTable = () => {
             onClick={() => {
               openInPopup({
                 id: row.tripId,
-                vehicalId: "",
-                date: new Date(),
-                time: "",
-                routeId: "",
-                stationId: "",
+                vehicalId: row.vehicleId,
+                date: row.date,
+                time: row.time,
+                routeId: row.routeId,
+                stationId: row.stationId,
               });
             }}
           >

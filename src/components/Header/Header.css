@@ -1,0 +1,127 @@
+header {
+    background-color: #86A3B8;
+    padding: 0 10px;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header .logo {
+    text-align: center;
+    font-family: Candara;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .logo a {
+    color: #000;
+    text-decoration: none;
+    font-style: italic;
+}
+
+header .nav-menu {
+    display: flex;
+    justify-content: center;
+}
+
+header .nav-menu li {
+    height: 100%;
+    padding: 8px;
+}
+
+header .nav-menu li a {
+    text-align: center;
+    color: #000;
+    font-size: large;
+    font-family: Candara;
+    margin: 0 10px;
+    height: 100%;
+    font-weight: 600;
+}
+
+header .nav-menu li:hover a {
+    opacity: 60%;
+}
+
+header .nav-btn {
+    display: flex;
+    justify-content: center;
+}
+
+header .nav-btn li a {
+    color: #000;
+    font-size: medium;
+    margin: 0 10px;
+    font-family: Candara;
+    font-size: large;
+    text-align: center;
+    font-weight: 600;
+}
+
+header .nav-btn .log-in:hover a {
+    opacity: 60%;
+}
+
+header .nav-btn .sign-up {
+    background-color: #F55050;
+    border-radius: 20px;
+}
+
+header .nav-btn .sign-up:hover {
+    background-color: #f71a1a;
+    border-radius: 20px;
+}
+
+header .nav-btn .sign-up a {
+    color: #fff;
+}
+
+header .nav-btn .profile {
+    background-color: #ffffffc1;
+    border-radius: 20px;
+}
+
+header .nav-btn .profile:hover {
+    border-radius: 20px 20px 0 0;
+}
+
+header .nav-btn .profile .profile-content {
+    opacity: 100%;
+    font-family: Candara;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+header .nav-item {
+    position: relative;
+}
+
+header li:hover .extra-nav {
+    display: block;
+    border-radius: 0 0 20px 20px;
+}
+
+header .extra-nav {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    list-style-type: none;
+    width: 100%;
+    background-color: #8e8e8e;
+    border-radius: 0 0 20px 20px;
+}
+
+header .extra-nav .profile-content-item {
+    color: #fff;
+    font-size: medium;
+    margin: 0;
+    cursor: pointer;
+}
+
+header .extra-nav .profile-content-item:hover {
+    opacity: 60%;
+}

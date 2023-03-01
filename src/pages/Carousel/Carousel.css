@@ -1,0 +1,23 @@
+.carousel {
+    /* margin-top: 10px; */
+    width: 100%;
+    height: 60vh;
+}
+
+img {
+    width: 100%;
+    height: 450px;
+    height: 60vh;
+}
+
+.carousel-control-next {
+    visibility: hidden;
+}
+
+.carousel-control-prev {
+    visibility: hidden;
+}
+
+.carousel-indicators {
+    visibility: hidden;
+}

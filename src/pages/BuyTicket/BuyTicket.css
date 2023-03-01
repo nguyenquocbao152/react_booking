@@ -1,0 +1,35 @@
+.buy-ticket {
+    margin: 50px auto;
+}
+
+.confirm-route .card {
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.confirm-route .card .time {
+    font-weight: 500;
+    font-size: x-large;
+    font-style: italic;
+    text-align: center;
+}
+
+.confirm-route .card .span {
+    display: inline-block;
+}
+
+.confirm-route .card .description {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 700;
+    background-color: rgb(234, 234, 234);
+    border-radius: 20px;
+    padding: 5px 0;
+}
+
+.confirm-route .card .button-choose {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

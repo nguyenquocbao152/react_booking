@@ -1,17 +1,15 @@
 import React from "react";
 import Chart from "../../components/chart/Chart";
 import Featured from "../../components/featured/featured";
-import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Widget from "../../components/wiget/Widget";
 import "./Home.scss";
 
-const Home = () => {
+const HomeAdmin = () => {
   return (
     <div className="home">
       <Sidebar />
       <div className="homeContainer">
-        <Navbar />
         <div className="datatableTitle">Dashboard</div>
         <div className="widgets">
           <Widget type="user" />
@@ -28,4 +26,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeAdmin;
