@@ -121,10 +121,7 @@ const TripTable = () => {
   const addOrEdit = (trip, resetForm) => {
     if (trip.id === "") {
       console.log("Insert");
-      var event = new Date(trip.date);
-
-      let date = JSON.stringify(event);
-      date = date.slice(1, 11);
+      let date = handleChange(trip.date);
       console.log("date format:", date);
       console.log("trip:", trip);
       console.log("vehicalId:", trip.vehicalId);
@@ -175,6 +172,15 @@ const TripTable = () => {
         alert("Delete trip successful");
       }
     });
+  };
+  const handleChange = (e) => {
+    const dateFormat =
+      e.getFullYear() +
+      "-" +
+      (e.getMonth() + 1).toString().padStart(2, "0") +
+      "-" +
+      e.getDate().toString().padStart(2, "0");
+    return dateFormat;
   };
   return (
     <div className="datatable">

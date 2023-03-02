@@ -10,6 +10,7 @@ footer {
 }
 
 footer .link-color {
+    text-decoration: none !important;
     color: #000;
 }
 
@@ -20,6 +21,8 @@ footer .link-color:hover {
 
 footer .short-line {
     width: 700px;
+    margin-left: 20rem;
+    
 }
 
 footer .box-logo-footer {
@@ -47,6 +50,7 @@ footer .title {
 }
 
 footer .cskh-phone {
+    text-decoration: none !important;
     color: #000;
     font-weight: 900;
     font-size: 36px;

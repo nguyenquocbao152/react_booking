@@ -36,7 +36,18 @@ const VerifyCode = () => {
   const handleSubmit = () => {
     // your submit logic
     console.log("user:", user.otp);
-    navigate("success");
+    const requestObj = {
+      method: "GET",
+    };
+    fetch(
+      `http://localhost:8080/users/verify?code=${user.otp}`,
+      requestObj
+    ).then((response) => {
+      if (response.status === 200) {
+        alert("Verify account successful");
+        navigate("success");
+      }
+    });
   };
 
   // Timer
@@ -59,7 +70,7 @@ const VerifyCode = () => {
           <h4 style={{ color: "green" }}></h4>
           <Box color="text.secondary">
             <Typography variant="body2">
-              Enter OTP Sent to your mobile number XXXXXX9989
+              Enter OTP Sent to your email
             </Typography>
           </Box>
         </Grid>
@@ -90,22 +101,6 @@ const VerifyCode = () => {
             VERIFY
           </Button>
         </ValidatorForm>
-        <Box mt={3}>
-          <Typography fontWeight={500} align="center" color="textSecondary">
-            {" "}
-            Resend OTP in{" "}
-            <span style={{ color: "green", fontWeight: "bold" }}>
-              {" "}
-              00:{counter}
-            </span>{" "}
-          </Typography>
-        </Box>
-
-        <Typography align="center">
-          <NavLink to="Signup">
-            <span style={{ marginLeft: "5px" }}> Resend OTP </span>
-          </NavLink>
-        </Typography>
       </Paper>
     </Grid>
   );

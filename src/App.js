@@ -1,3 +1,4 @@
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Auth/Login";
@@ -25,48 +26,58 @@ import VerifySuccess from "./pages/Verify/VerifySuccess";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Header></Header>
-        <Routes>
-          <Route path="/">
-            <Route index element={<HomeUser />} />
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="tour" element={<TripList />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="about" element={<SearchTrip />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="password" element={<ChangePassword />} />
-            <Route path="buyTicket" element={<BuyTicket />}></Route>
-            <Route path="buyTicketSuccess" element={<Success />}></Route>
-            <Route path="admin" element={<HomeAdmin />}></Route>
-            <Route path="form" element={<UserForm />} />
-            <Route path="register/verify" element={<VerifyCode />} />
-            <Route path="register/verify/success" element={<VerifySuccess />} />
-            <Route path="users">
-              <Route index element={<List />} />
+    <PayPalScriptProvider
+      options={{
+        "client-id":
+          "AddU57tauCNjWXZ0ps1h-1V9gQxTBCkqxthJMK-GEDqMu-DGOInDrugVNAd69Qtcbeqb-_aPHzXe48u-",
+      }}
+    >
+      <div className="App">
+        <BrowserRouter>
+          <Header></Header>
+          <Routes>
+            <Route path="/">
+              <Route index element={<HomeUser />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="tour" element={<TripList />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="about" element={<SearchTrip />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="password" element={<ChangePassword />} />
+              <Route path="buyTicket" element={<BuyTicket />}></Route>
+              <Route path="buyTicketSuccess" element={<Success />}></Route>
+              <Route path="admin" element={<HomeAdmin />}></Route>
+              <Route path="form" element={<UserForm />} />
+              <Route path="register/verify" element={<VerifyCode />} />
+              <Route
+                path="register/verify/success"
+                element={<VerifySuccess />}
+              />
+              <Route path="users">
+                <Route index element={<List />} />
+              </Route>
+              <Route path="trips">
+                <Route index element={<Trip />} />
+              </Route>
+              <Route path="routes">
+                <Route index element={<Rout />} />
+              </Route>
+              <Route path="vehicles">
+                <Route index element={<Vehicle />} />
+              </Route>
+              <Route path="feedbacks">
+                <Route index element={<Feedback />} />
+              </Route>
+              <Route path="stations">
+                <Route index element={<Station />} />
+              </Route>
             </Route>
-            <Route path="trips">
-              <Route index element={<Trip />} />
-            </Route>
-            <Route path="routes">
-              <Route index element={<Rout />} />
-            </Route>
-            <Route path="vehicles">
-              <Route index element={<Vehicle />} />
-            </Route>
-            <Route path="feedbacks">
-              <Route index element={<Feedback />} />
-            </Route>
-            <Route path="stations">
-              <Route index element={<Station />} />
-            </Route>
-          </Route>
-        </Routes>
-        <Footer></Footer>
-      </BrowserRouter>
-    </div>
+          </Routes>
+          <Footer></Footer>
+        </BrowserRouter>
+      </div>
+    </PayPalScriptProvider>
   );
 }
 

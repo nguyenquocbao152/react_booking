@@ -1,6 +1,7 @@
 import { StepLabel, Stepper, Step } from "@mui/material";
 import React, { useContext, useEffect, useState, createContext } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import PaypalCheckoutButton from "../../components/checkout/PaypalCheckoutButton";
 import "./BuyTicket.css";
 const myContext = createContext();
 
@@ -19,20 +20,25 @@ export default function BuyTicket() {
   };
 
   useEffect(() => {
+    if (step === 1) {
+      setScreen(<ConfirmRoute />);
+      setSearchParams({ ...Object.fromEntries(searchParams), step: "1" });
+    }
     if (step === 2) {
       setScreen(<ConfirmInfor />);
-      // console.log(Object.fromEntries(searchParams))
-      // setSearchParams({ ...Object.fromEntries(searchParams), step: "2" })
+      setSearchParams({ ...Object.fromEntries(searchParams), step: "2" });
     }
     if (step === 3) {
+      setScreen(<Payment />);
+      setSearchParams({ ...Object.fromEntries(searchParams), step: "3" });
     }
   }, [step]);
 
-  // const prevStep = () => {
-  //     if (activeStep !== -1) {
-  //         setActiveStep((currentStep) => currentStep - 1)
-  //     }
-  // }
+  const prevStep = () => {
+    if (step >= 0) {
+      setStep((currentStep) => currentStep - 1);
+    }
+  };
 
   useEffect(() => {
     const routeObj = {
@@ -65,6 +71,9 @@ export default function BuyTicket() {
         <Step>
           <StepLabel>Xác nhận thông tin</StepLabel>
         </Step>
+        <Step>
+          <StepLabel>Thanh toán</StepLabel>
+        </Step>
         {/* <Step>
                     <StepLabel>Thanh toán</StepLabel>
                 </Step> */}
@@ -72,7 +81,9 @@ export default function BuyTicket() {
       <myContext.Provider value={{ listTrip, nextStep, id }}>
         {screen}
       </myContext.Provider>
-      {/* <button onClick={() => prevStep()}>Prev</button><br /> */}
+      <button className="btn btn-warning" onClick={() => prevStep()}>
+        Trở về
+      </button>
       {/* <button onClick={() => nextStep()}>Next</button> */}
     </div>
   );
@@ -176,7 +187,7 @@ function ConfirmInfor() {
   };
   const handleConfirmInfor = (e) => {
     e.preventDefault();
-    navigate("/buyTicketSuccess");
+    context.nextStep(e.target.id);
     sessionStorage.setItem(
       "trip",
       JSON.stringify(context.listTrip[context.id])
@@ -271,6 +282,7 @@ function ConfirmInfor() {
               <div className="col-12">
                 <button
                   className="btn btn-secondary"
+                  id={context.id}
                   onClick={handleConfirmInfor}
                   type="submit"
                 >
@@ -281,6 +293,25 @@ function ConfirmInfor() {
           </form>
         </div>
         <div className="col-lg-3"></div>
+      </div>
+    </div>
+  );
+}
+
+function Payment() {
+  const trip = JSON.parse(sessionStorage.getItem("trip"));
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-sm-12">
+          <h3 className="mt-4 text-center">Thanh toán</h3>
+          <p>
+            <i>Khách hàng có thể thanh toán bằng các hình thức</i>
+          </p>
+        </div>
+      </div>
+      <div className="button-checkout">
+        <PaypalCheckoutButton trip={trip}></PaypalCheckoutButton>
       </div>
     </div>
   );

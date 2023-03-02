@@ -33,3 +33,6 @@
     align-items: center;
     justify-content: center;
 }
+.button-checkout{
+    width: fit-content;
+}

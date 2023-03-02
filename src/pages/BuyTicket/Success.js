@@ -95,7 +95,7 @@ export default function Success() {
         </div>
         <div className="col-12 col-sm-3"></div>
       </div>
-      <div className="row mb-4">
+      <div className="button-back mb-4">
         <button className="btn btn-danger" onClick={handleBackToHome}>
           Trở về trang chủ
         </button>
