@@ -13,17 +13,17 @@ const FeedbackTable = () => {
   const [recordForEdit, setRecordForEdit] = useState(null);
   const columns = [
     {
-      name: "Passenger",
+      name: "Khách Hàng",
       selector: (row) => row.userId,
       sortable: true,
     },
     {
-      name: "Message",
+      name: "Tin Nhắn",
       selector: (row) => row.message,
       sortable: true,
     },
     {
-      name: "Response",
+      name: "Phản Hồi",
       selector: (row) => row.response,
     },
     {
@@ -40,7 +40,7 @@ const FeedbackTable = () => {
               });
             }}
           >
-            {row.response === "" ? "Rely" : "No action"}
+            {row.response === "" ? "Phản Hồi" : "No action"}
           </div>
         </div>
       ),

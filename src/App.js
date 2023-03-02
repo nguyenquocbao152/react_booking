@@ -19,6 +19,7 @@ import HomeAdmin from "./pages/home/Home";
 import List from "./pages/list/List";
 import Rout from "./pages/route/Route";
 import Station from "./pages/station/Station";
+import Ticket from "./pages/ticket/Ticket";
 import Trip from "./pages/trip/Trip";
 import Vehicle from "./pages/vehicle/Vehicle";
 import VerifyCode from "./pages/Verify/VerifyCode";
@@ -71,6 +72,9 @@ function App() {
               </Route>
               <Route path="stations">
                 <Route index element={<Station />} />
+              </Route>
+              <Route path="tickets">
+                <Route index element={<Ticket />} />
               </Route>
             </Route>
           </Routes>

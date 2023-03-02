@@ -97,11 +97,6 @@ export default function Header() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/tour">
-                  Lịch trình
-                </NavLink>
-              </li>
-              <li className="nav-item">
                 <NavLink className="nav-link" to="/contact">
                   Liên hệ
                 </NavLink>

@@ -13,27 +13,27 @@ const RouteTable = () => {
   const [data, setData] = useState([]);
   const columns = [
     {
-      name: "From",
+      name: "Điểm Đi",
       selector: (row) => row.from,
       sortable: true,
     },
     {
-      name: "To",
+      name: "Điểm Đến",
       selector: (row) => row.arrive,
       sortable: true,
     },
     {
-      name: "Travel Time",
+      name: "Tổng giờ",
       selector: (row) => row.travelTime,
       sortable: true,
     },
     {
-      name: "Distance",
+      name: "Khoảng Cách",
       selector: (row) => row.distance,
       sortable: true,
     },
     {
-      name: "Fare",
+      name: "Chi Phí",
       selector: (row) => row.fare,
       sortable: true,
     },
@@ -54,10 +54,10 @@ const RouteTable = () => {
               })
             }
           >
-            Update
+            Cập Nhật
           </div>
           <div className="delete" onClick={() => handleDelete(row.routeId)}>
-            Delete
+            Xóa
           </div>
         </div>
       ),
@@ -179,7 +179,7 @@ const RouteTable = () => {
             setRecordForEdit(null);
           }}
         >
-          Add New
+          Thêm Mới
         </div>
       </div>
       <div className="search">

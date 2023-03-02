@@ -28,12 +28,12 @@ const StationTable = () => {
   };
   const columns = [
     {
-      name: "StationStart",
+      name: "Bến Đi",
       selector: (row) => row.stationStart,
       sortable: true,
     },
     {
-      name: "StationEnd",
+      name: "Bến Đến",
       selector: (row) => row.stationEnd,
       sortable: true,
     },
@@ -51,10 +51,10 @@ const StationTable = () => {
               });
             }}
           >
-            Update
+            Cập Nhật
           </div>
           <div className="delete" onClick={() => handleDelete(row.stationId)}>
-            Delete
+            Xóa
           </div>
         </div>
       ),

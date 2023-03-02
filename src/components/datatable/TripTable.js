@@ -27,23 +27,23 @@ const TripTable = () => {
   const [recordForEdit, setRecordForEdit] = useState(null);
   const columns = [
     {
-      name: "License Plate",
+      name: "Bảng Số Xe",
       selector: (row) => row.liencePlate,
       sortable: true,
     },
     {
-      name: "Route",
+      name: "Lộ Trình",
       selector: (row) => row.from + " - " + row.arrival,
       sortable: true,
       wrap: true,
     },
     {
-      name: "Total Seats",
+      name: "Tổng Ghế",
       selector: (row) => row.totalSeat + " Available",
       sortable: true,
     },
     {
-      name: "Date",
+      name: "Ngày",
       selector: (row) => {
         return format(parseISO(row.date), "yyyy-MM-dd");
       },
@@ -51,22 +51,22 @@ const TripTable = () => {
     },
 
     {
-      name: "Time",
+      name: "Giờ",
       selector: (row) => row.time,
     },
     {
-      name: "Fare",
+      name: "Chi Phí",
       selector: (row) => row.fare,
       sortable: true,
     },
     {
-      name: "Station Start",
+      name: "Điểm Đi",
       selector: (row) => row.stationStart,
       sortable: true,
       wrap: true,
     },
     {
-      name: "Station End",
+      name: "Điểm Đến",
       selector: (row) => row.stationEnd,
       sortable: true,
       wrap: true,
@@ -88,10 +88,10 @@ const TripTable = () => {
               });
             }}
           >
-            Update
+            Cập Nhật
           </div>
           <div className="delete" onClick={() => handleDelete(row.tripId)}>
-            Delete
+            Xóa
           </div>
         </div>
       ),

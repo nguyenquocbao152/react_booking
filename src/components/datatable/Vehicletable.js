@@ -13,21 +13,21 @@ const Vehicletable = () => {
   const [recordForEdit, setRecordForEdit] = useState(null);
   const columns = [
     {
-      name: "License Plate",
+      name: "Bảng Số Xe",
       selector: (row) => row.licensePlates,
       sortable: true,
     },
     {
-      name: "Color",
+      name: "Màu Sắc",
       selector: (row) => row.color,
       sortable: true,
     },
     {
-      name: "Seats",
+      name: "Tổng Ghế",
       selector: (row) => row.seat,
     },
     {
-      name: "Type",
+      name: "Loại Xe",
       selector: (row) => row.vehicleTypeId,
     },
     {

@@ -9,17 +9,17 @@ const URL = "http://localhost:8080/users/getAllUser";
 const Datatable = () => {
   const columns = [
     {
-      name: "Full Name",
+      name: "Họ Và Tên",
       selector: (row) => row.fullname,
       sortable: true,
     },
     {
-      name: "Gender",
+      name: "Giới Tính",
       selector: (row) => row.gender,
       sortable: true,
     },
     {
-      name: "Phone",
+      name: "Điện Thoại",
       selector: (row) => row.phoneNumber,
       sortable: true,
     },
@@ -29,7 +29,7 @@ const Datatable = () => {
       sortable: true,
     },
     {
-      name: "Role",
+      name: "Vai Trò",
       selector: (row) => row.role,
       sortable: true,
     },
@@ -49,10 +49,10 @@ const Datatable = () => {
               });
             }}
           >
-            Update
+            Cập Nhật
           </div>
           <div className="delete" onClick={() => handleDelete(row.phoneNumber)}>
-            Delete
+            Xóa
           </div>
         </div>
       ),

@@ -9,6 +9,7 @@ import {
   LocationOn,
   PersonOutlineOutlined,
   Route,
+  Sell,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 const Sidebar = () => {
@@ -33,43 +34,49 @@ const Sidebar = () => {
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineOutlined className="icon" />
-              <span>User</span>
+              <span>Người dùng</span>
             </li>
           </Link>
           <Link to="/trips" style={{ textDecoration: "none" }}>
             <li>
               <DepartureBoard className="icon" />
-              <span>Trip</span>
+              <span>Chuyến Đi</span>
             </li>
           </Link>
           <Link to="/routes" style={{ textDecoration: "none" }}>
             <li>
               <Route className="icon" />
-              <span>Route</span>
+              <span>Lộ Trình</span>
             </li>
           </Link>
           <Link to="/vehicles" style={{ textDecoration: "none" }}>
             <li>
               <LocalShipping className="icon" />
-              <span>Vehicle</span>
+              <span>Xe</span>
             </li>
           </Link>
           <Link to="/stations" style={{ textDecoration: "none" }}>
             <li>
               <LocationOn className="icon" />
-              <span>Stations</span>
+              <span>Bến</span>
             </li>
           </Link>
           <p className="title">User</p>
           <Link to="/feedbacks" style={{ textDecoration: "none" }}>
             <li>
               <Feedback className="icon" />
-              <span>Feedback</span>
+              <span>Góp Ý</span>
+            </li>
+          </Link>
+          <Link to="/tickets" style={{ textDecoration: "none" }}>
+            <li>
+              <Sell className="icon" />
+              <span>Vé Xe</span>
             </li>
           </Link>
           <li>
             <ExitToApp className="icon" />
-            <span>Logout</span>
+            <span>Đăng Xuất</span>
           </li>
         </ul>
       </div>
