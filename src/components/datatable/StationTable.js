@@ -5,7 +5,8 @@ import StationForm from "../form/StationForm";
 
 import Popup from "../popup/Popup";
 
-const URL = "http://localhost:8080/station/getAllStation";
+const URL =
+  "https://ticket-booking-production.up.railway.app/station/getAllStation";
 const StationTable = () => {
   const [openPopup, setOpenPopup] = useState(false);
   const [data, setData] = useState([]);
@@ -18,7 +19,7 @@ const StationTable = () => {
       headers: { "Content-Type": "application/json" },
     };
     fetch(
-      `http://localhost:8080/station/deleteStation?stationId=${id}`,
+      `https://ticket-booking-production.up.railway.app/station/deleteStation?stationId=${id}`,
       requestObj
     ).then((response) => {
       if (response.status === 200) {
@@ -94,7 +95,8 @@ const StationTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(statio),
       };
-      const requestUrl = "http://localhost:8080/station/createStation";
+      const requestUrl =
+        "https://ticket-booking-production.up.railway.app/station/createStation";
       fetch(requestUrl, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Add station successful");
@@ -117,7 +119,8 @@ const StationTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(statio),
       };
-      const requestUrl = "http://localhost:8080/station/updateStation";
+      const requestUrl =
+        "https://ticket-booking-production.up.railway.app/station/updateStation";
       fetch(requestUrl, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Update station successful");
@@ -136,15 +139,15 @@ const StationTable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        List All Stations
+        Danh Sách Các Bến
         <div className="link" onClick={() => setOpenPopup(true)}>
-          Add New
+          Thêm Mới
         </div>
       </div>
       <div className="search">
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Tìm Kiếm..."
           onChange={(e) => setSearch(e.target.value)}
           value={search}
         />

@@ -112,7 +112,10 @@ export default function Register() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userRegisterObj),
       };
-      fetch("http://localhost:8080/users/register", requestObj)
+      fetch(
+        "https://ticket-booking-production.up.railway.app/users/register",
+        requestObj
+      )
         .then((response) => response.json())
         .then((data) => {
           console.log(data);

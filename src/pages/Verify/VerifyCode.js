@@ -40,7 +40,7 @@ const VerifyCode = () => {
       method: "GET",
     };
     fetch(
-      `http://localhost:8080/users/verify?code=${user.otp}`,
+      `https://ticket-booking-production.up.railway.app/users/verify?code=${user.otp}`,
       requestObj
     ).then((response) => {
       if (response.status === 200) {

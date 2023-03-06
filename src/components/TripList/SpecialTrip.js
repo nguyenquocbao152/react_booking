@@ -10,7 +10,10 @@ export default function SpecialTrip() {
       headers: { "Content-Type": "application/json" },
     };
 
-    fetch("http://localhost:8080/route/getAllRoutes", requestObj)
+    fetch(
+      "https://ticket-booking-production.up.railway.app/route/getAllRoutes",
+      requestObj
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

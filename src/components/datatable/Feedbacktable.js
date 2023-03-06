@@ -4,7 +4,8 @@ import FeedbackForm from "../form/FeedbackForm";
 import Popup from "../popup/Popup";
 
 import "./FeedTable.scss";
-const URL = "http://localhost:8080/feedback/getAllFeedBack";
+const URL =
+  "https://ticket-booking-production.up.railway.app/feedback/getAllFeedBack";
 const FeedbackTable = () => {
   const [data, setData] = useState([]);
   const [user, setUser] = useState([]);
@@ -59,7 +60,8 @@ const FeedbackTable = () => {
     fetchData();
   }, []);
   useEffect(() => {
-    const requestUrl = "http://localhost:8080/users/getAllUser";
+    const requestUrl =
+      "https://ticket-booking-production.up.railway.app/users/getAllUser";
     const fetchData = async () => {
       const result = await fetch(requestUrl, {
         method: "POST",
@@ -91,7 +93,8 @@ const FeedbackTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(feeback),
       };
-      const requestUrl = "http://localhost:8080/feedback/updateFeedBack";
+      const requestUrl =
+        "https://ticket-booking-production.up.railway.app/feedback/updateFeedBack";
       fetch(requestUrl, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Response passenger successful");
@@ -125,13 +128,13 @@ const FeedbackTable = () => {
   return (
     <div style={{ margin: "20px" }}>
       <DataTable
-        title="List All Feedback"
+        title="Danh Sách Góp Ý"
         columns={columns}
         data={getAllFeedback()}
         pagination
       />
       <Popup
-        title="Relying to Passenger's Message"
+        title="Phản Hồi Góp Ý Của Người Dùng"
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >

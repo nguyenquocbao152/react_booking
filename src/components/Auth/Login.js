@@ -30,7 +30,10 @@ export default function Login() {
       body: JSON.stringify(userObj),
     };
 
-    fetch("http://localhost:8080/users/login", requestObj)
+    fetch(
+      "https://ticket-booking-production.up.railway.app/users/login",
+      requestObj
+    )
       .then((response) => response.json())
       .then((data) => {
         setMessage(data.message);

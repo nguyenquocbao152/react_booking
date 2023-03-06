@@ -2,7 +2,8 @@ import { SearchOutlined } from "@mui/icons-material";
 import { format, parseISO } from "date-fns";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-const URL = "http://localhost:8080/ticket/getAllTicket";
+const URL =
+  "https://ticket-booking-production.up.railway.app/ticket/getAllTicket";
 const Tickettable = () => {
   const columns = [
     {
@@ -36,8 +37,8 @@ const Tickettable = () => {
       name: "Action",
       cell: (row) => (
         <div className="cellAction">
-          <div className="update">Update</div>
-          <div className="delete">Delete</div>
+          <div className="update">Cập Nhật</div>
+          <div className="delete">Xóa</div>
         </div>
       ),
     },
@@ -57,9 +58,9 @@ const Tickettable = () => {
   }, []);
   return (
     <div className="datatable">
-      <div className="datatableTitle">List All Ticket</div>
+      <div className="datatableTitle">Danh Sách Vé</div>
       <div className="search">
-        <input type="text" placeholder="Search..." />
+        <input type="text" placeholder="Tìm Kiếm..." />
         <SearchOutlined />
       </div>
       <div style={{ margin: "20px" }}>

@@ -51,7 +51,10 @@ export default function BuyTicket() {
       body: JSON.stringify(routeObj),
     };
 
-    fetch("http://localhost:8080/trip/getAllTripByDate", requestObj)
+    fetch(
+      "https://ticket-booking-production.up.railway.app/trip/getAllTripByDate",
+      requestObj
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

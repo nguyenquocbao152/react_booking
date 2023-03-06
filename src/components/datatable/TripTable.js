@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import TripForm from "../form/TripForm";
 import Popup from "../popup/Popup";
-const URL = "http://localhost:8080/trip/getAllTrip";
+const URL = "https://ticket-booking-production.up.railway.app/trip/getAllTrip";
 const customStyles = {
   rows: {
     style: {
@@ -141,7 +141,8 @@ const TripTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(tri),
       };
-      const requestUrl = "http://localhost:8080/trip/createTrip";
+      const requestUrl =
+        "https://ticket-booking-production.up.railway.app/trip/createTrip";
       fetch(requestUrl, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Add trip successful");
@@ -165,7 +166,7 @@ const TripTable = () => {
       headers: { "Content-Type": "application/json" },
     };
     fetch(
-      `http://localhost:8080/trip/deleteTrip?tripId=${id}`,
+      `https://ticket-booking-production.up.railway.app/trip/deleteTrip?tripId=${id}`,
       requestObj
     ).then((response) => {
       if (response.status === 200) {

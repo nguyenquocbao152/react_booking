@@ -4,7 +4,8 @@ import DataTable from "react-data-table-component";
 import VehicleForm from "../form/VehicleForm";
 import Popup from "../popup/Popup";
 import "./VehiclTable.scss";
-const URL = "http://localhost:8080/vehicle/getAllVehicle";
+const URL =
+  "https://ticket-booking-production.up.railway.app/vehicle/getAllVehicle";
 const Vehicletable = () => {
   const [openPopup, setOpenPopup] = useState(false);
   const [data, setData] = useState([]);
@@ -46,10 +47,10 @@ const Vehicletable = () => {
               });
             }}
           >
-            Update
+            Cập Nhật
           </div>
           <div className="delete" onClick={() => handleDelete(row.vehicalId)}>
-            Delete
+            Xóa
           </div>
         </div>
       ),
@@ -93,7 +94,8 @@ const Vehicletable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(vehicl),
       };
-      const requestUrl = "http://localhost:8080/vehicle/createVehicle";
+      const requestUrl =
+        "https://ticket-booking-production.up.railway.app/vehicle/createVehicle";
       fetch(requestUrl, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Add vehicle successful");
@@ -123,7 +125,8 @@ const Vehicletable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(vehicl),
       };
-      const requestUrl = "http://localhost:8080/vehicle/updateVehicle";
+      const requestUrl =
+        "https://ticket-booking-production.up.railway.app/vehicle/updateVehicle";
       fetch(requestUrl, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Update vehicle successful");
@@ -141,7 +144,7 @@ const Vehicletable = () => {
       headers: { "Content-Type": "application/json" },
     };
     fetch(
-      `http://localhost:8080/vehicle/deleteVehicle?vehicleId=${id}`,
+      `https://ticket-booking-production.up.railway.app/vehicle/deleteVehicle?vehicleId=${id}`,
       requestObj
     ).then((response) => {
       if (response.status === 200) {
@@ -164,7 +167,7 @@ const Vehicletable = () => {
       <div className="search">
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Tìm Kiếm..."
           onChange={(e) => setSearch(e.target.value)}
           value={search}
         />

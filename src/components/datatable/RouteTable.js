@@ -4,7 +4,8 @@ import DataTable from "react-data-table-component";
 import RouteForm from "../form/RouteForm";
 import Popup from "../popup/Popup";
 import "./RoutTable.scss";
-const URL = "http://localhost:8080/route/getAllRoutes";
+const URL =
+  "https://ticket-booking-production.up.railway.app/route/getAllRoutes";
 const RouteTable = () => {
   const [openPopup, setOpenPopup] = useState(false);
   const [recordForEdit, setRecordForEdit] = useState(null);
@@ -103,7 +104,8 @@ const RouteTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(rout),
       };
-      const requestUrl = "http://localhost:8080/route/createRoute";
+      const requestUrl =
+        "https://ticket-booking-production.up.railway.app/route/createRoute";
       fetch(requestUrl, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Add route successful");
@@ -136,7 +138,8 @@ const RouteTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(rout),
       };
-      const requestUrl = "http://localhost:8080/route/updateRoute";
+      const requestUrl =
+        "https://ticket-booking-production.up.railway.app/route/updateRoute";
       fetch(requestUrl, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Update route successful");
@@ -160,7 +163,7 @@ const RouteTable = () => {
       headers: { "Content-Type": "application/json" },
     };
     fetch(
-      `http://localhost:8080/route/deleteRoute?routeId=${id}`,
+      `https://ticket-booking-production.up.railway.app/route/deleteRoute?routeId=${id}`,
       requestObj
     ).then((response) => {
       if (response.status === 200) {
@@ -171,7 +174,7 @@ const RouteTable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        List All Routes
+        Danh Sách Lộ Trình
         <div
           className="link"
           onClick={() => {
@@ -185,7 +188,7 @@ const RouteTable = () => {
       <div className="search">
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Tìm Kiếm..."
           onChange={(e) => setSearch(e.target.value)}
           value={search}
         />

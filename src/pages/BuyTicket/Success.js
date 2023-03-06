@@ -34,7 +34,10 @@ export default function Success() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dataObj),
     };
-    fetch("http://localhost:8080/ticket/createTicket", reqObj)
+    fetch(
+      "https://ticket-booking-production.up.railway.app/ticket/createTicket",
+      reqObj
+    )
       .then((response) => response.json())
       .then((data) => {
         setMessage(data.message);

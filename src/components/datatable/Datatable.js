@@ -5,7 +5,7 @@ import "./Datatable.scss";
 import DataTable from "react-data-table-component";
 import { SearchOutlined } from "@mui/icons-material";
 import UpdateUser from "../form/UpdateUser";
-const URL = "http://localhost:8080/users/getAllUser";
+const URL = "https://ticket-booking-production.up.railway.app/users/getAllUser";
 const Datatable = () => {
   const columns = [
     {
@@ -70,7 +70,7 @@ const Datatable = () => {
       headers: { "Content-Type": "application/json" },
     };
     fetch(
-      `http://localhost:8080/users/deleteUser?phoneNumber=${id}`,
+      `https://ticket-booking-production.up.railway.app/users/deleteUser?phoneNumber=${id}`,
       requestObj
     ).then((response) => {
       if (response.status === 200) {
@@ -117,7 +117,8 @@ const Datatable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(users),
       };
-      const requestUrl = "http://localhost:8080/users/register";
+      const requestUrl =
+        "https://ticket-booking-production.up.railway.app/users/register";
       fetch(requestUrl, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Add user successful");
@@ -144,7 +145,8 @@ const Datatable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(users),
       };
-      const requestUrl = "http://localhost:8080/users/updateUser";
+      const requestUrl =
+        "https://ticket-booking-production.up.railway.app/users/updateUser";
       fetch(requestUrl, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Update user successful");
@@ -164,15 +166,15 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        List All Users
+        Danh Sách Người Dùng
         <div className="link" onClick={() => setOpenPopup(true)}>
-          Add New
+          Thêm Mới
         </div>
       </div>
       <div className="search">
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Tìm Kiếm..."
           onChange={(e) => setSearch(e.target.value)}
           value={search}
         />

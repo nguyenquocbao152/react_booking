@@ -80,7 +80,10 @@ export default function Profile() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(useObj),
       };
-      fetch("http://localhost:8080/users/updateUser", reqObj)
+      fetch(
+        "https://ticket-booking-production.up.railway.app/users/updateUser",
+        reqObj
+      )
         .then((response) => response.json())
         .then((data) => {
           if (data.status === 200) {

@@ -21,7 +21,8 @@ function TripForm(props) {
   const [route, setRoute] = useState([]);
   const [station, setStation] = useState([]);
   useEffect(() => {
-    const requestUrl = "http://localhost:8080/vehicle/getAllVehicle";
+    const requestUrl =
+      "https://ticket-booking-production.up.railway.app/vehicle/getAllVehicle";
     const fetchData = async () => {
       const result = await fetch(requestUrl, {
         method: "POST",
@@ -33,7 +34,8 @@ function TripForm(props) {
     fetchData();
   }, []);
   useEffect(() => {
-    const requestUrl = "http://localhost:8080/route/getAllRoutes";
+    const requestUrl =
+      "https://ticket-booking-production.up.railway.app/route/getAllRoutes";
     const fetchData = async () => {
       const result = await fetch(requestUrl, {
         method: "POST",
@@ -45,7 +47,8 @@ function TripForm(props) {
     fetchData();
   }, []);
   useEffect(() => {
-    const requestUrl = "http://localhost:8080/station/getAllStation";
+    const requestUrl =
+      "https://ticket-booking-production.up.railway.app/station/getAllStation";
     const fetchData = async () => {
       const result = await fetch(requestUrl, {
         method: "POST",
