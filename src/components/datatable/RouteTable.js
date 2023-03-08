@@ -1,11 +1,11 @@
 import { SearchOutlined } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
+import { requestUrl } from "../../const/Const";
 import RouteForm from "../form/RouteForm";
 import Popup from "../popup/Popup";
 import "./RoutTable.scss";
-const URL =
-  "https://ticket-booking-production.up.railway.app/route/getAllRoutes";
+const URL = `${requestUrl}route/getAllRoutes`;
 const RouteTable = () => {
   const [openPopup, setOpenPopup] = useState(false);
   const [recordForEdit, setRecordForEdit] = useState(null);
@@ -104,9 +104,8 @@ const RouteTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(rout),
       };
-      const requestUrl =
-        "https://ticket-booking-production.up.railway.app/route/createRoute";
-      fetch(requestUrl, requestObj).then((response) => {
+      const requestUr = `${requestUrl}route/createRoute`;
+      fetch(requestUr, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Add route successful");
           resetForm();
@@ -138,9 +137,8 @@ const RouteTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(rout),
       };
-      const requestUrl =
-        "https://ticket-booking-production.up.railway.app/route/updateRoute";
-      fetch(requestUrl, requestObj).then((response) => {
+      const requestUr = `${requestUrl}route/updateRoute`;
+      fetch(requestUr, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Update route successful");
           resetForm();
@@ -162,14 +160,13 @@ const RouteTable = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     };
-    fetch(
-      `https://ticket-booking-production.up.railway.app/route/deleteRoute?routeId=${id}`,
-      requestObj
-    ).then((response) => {
-      if (response.status === 200) {
-        alert("Delete route successful");
+    fetch(`${requestUrl}route/deleteRoute?routeId=${id}`, requestObj).then(
+      (response) => {
+        if (response.status === 200) {
+          alert("Delete route successful");
+        }
       }
-    });
+    );
   };
   return (
     <div className="datatable">

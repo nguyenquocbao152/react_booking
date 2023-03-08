@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { useState } from "react";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { NavLink, useNavigate } from "react-router-dom";
+import { requestUrl } from "../../const/Const";
 
 const VerifyCode = () => {
   const navigate = useNavigate();
@@ -39,15 +40,14 @@ const VerifyCode = () => {
     const requestObj = {
       method: "GET",
     };
-    fetch(
-      `https://ticket-booking-production.up.railway.app/users/verify?code=${user.otp}`,
-      requestObj
-    ).then((response) => {
-      if (response.status === 200) {
-        alert("Verify account successful");
-        navigate("success");
+    fetch(`${requestUrl}users/verify?code=${user.otp}`, requestObj).then(
+      (response) => {
+        if (response.status === 200) {
+          alert("Verify account successful");
+          navigate("success");
+        }
       }
-    });
+    );
   };
 
   // Timer

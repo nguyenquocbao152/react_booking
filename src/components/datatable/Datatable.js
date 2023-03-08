@@ -5,7 +5,8 @@ import "./Datatable.scss";
 import DataTable from "react-data-table-component";
 import { SearchOutlined } from "@mui/icons-material";
 import UpdateUser from "../form/UpdateUser";
-const URL = "https://ticket-booking-production.up.railway.app/users/getAllUser";
+import { requestUrl } from "../../const/Const";
+const url = `${requestUrl}users/getAllUser`;
 const Datatable = () => {
   const columns = [
     {
@@ -69,18 +70,17 @@ const Datatable = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     };
-    fetch(
-      `https://ticket-booking-production.up.railway.app/users/deleteUser?phoneNumber=${id}`,
-      requestObj
-    ).then((response) => {
-      if (response.status === 200) {
-        alert("Delete user successful");
+    fetch(`${requestUrl}users/deleteUser?phoneNumber=${id}`, requestObj).then(
+      (response) => {
+        if (response.status === 200) {
+          alert("Delete user successful");
+        }
       }
-    });
+    );
   };
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch(URL, {
+      const result = await fetch(url, {
         method: "POST",
       });
       result.json().then((json) => {
@@ -117,9 +117,8 @@ const Datatable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(users),
       };
-      const requestUrl =
-        "https://ticket-booking-production.up.railway.app/users/register";
-      fetch(requestUrl, requestObj).then((response) => {
+      const requestUr = `${requestUrl}users/register`;
+      fetch(requestUr, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Add user successful");
           resetForm();
@@ -145,9 +144,8 @@ const Datatable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(users),
       };
-      const requestUrl =
-        "https://ticket-booking-production.up.railway.app/users/updateUser";
-      fetch(requestUrl, requestObj).then((response) => {
+      const requestUr = `${requestUrl}users/updateUser`;
+      fetch(requestUr, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Update user successful");
           resetForm();

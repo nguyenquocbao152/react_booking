@@ -1,12 +1,12 @@
 import { SearchOutlined } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
+import { requestUrl } from "../../const/Const";
 import StationForm from "../form/StationForm";
 
 import Popup from "../popup/Popup";
 
-const URL =
-  "https://ticket-booking-production.up.railway.app/station/getAllStation";
+const URL = `${requestUrl}station/getAllStation`;
 const StationTable = () => {
   const [openPopup, setOpenPopup] = useState(false);
   const [data, setData] = useState([]);
@@ -19,7 +19,7 @@ const StationTable = () => {
       headers: { "Content-Type": "application/json" },
     };
     fetch(
-      `https://ticket-booking-production.up.railway.app/station/deleteStation?stationId=${id}`,
+      `${requestUrl}station/deleteStation?stationId=${id}`,
       requestObj
     ).then((response) => {
       if (response.status === 200) {
@@ -95,9 +95,8 @@ const StationTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(statio),
       };
-      const requestUrl =
-        "https://ticket-booking-production.up.railway.app/station/createStation";
-      fetch(requestUrl, requestObj).then((response) => {
+      const requestUr = `${requestUrl}station/createStation`;
+      fetch(requestUr, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Add station successful");
         }
@@ -119,9 +118,8 @@ const StationTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(statio),
       };
-      const requestUrl =
-        "https://ticket-booking-production.up.railway.app/station/updateStation";
-      fetch(requestUrl, requestObj).then((response) => {
+      const requestUr = `${requestUrl}station/updateStation`;
+      fetch(requestUr, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Update station successful");
         }

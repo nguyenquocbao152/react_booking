@@ -2,6 +2,7 @@ import { StepLabel, Stepper, Step } from "@mui/material";
 import React, { useContext, useEffect, useState, createContext } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import PaypalCheckoutButton from "../../components/checkout/PaypalCheckoutButton";
+import { requestUrl } from "../../const/Const";
 import "./BuyTicket.css";
 const myContext = createContext();
 
@@ -51,10 +52,7 @@ export default function BuyTicket() {
       body: JSON.stringify(routeObj),
     };
 
-    fetch(
-      "https://ticket-booking-production.up.railway.app/trip/getAllTripByDate",
-      requestObj
-    )
+    fetch(`${requestUrl}trip/getAllTripByDate`, requestObj)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

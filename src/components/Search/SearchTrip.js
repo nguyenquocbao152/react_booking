@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { requestUrl } from "../../const/Const";
 import "./Form.css";
 import MuiDatePicker from "./MuiDatePicker";
 import SelectRoute from "./SelectRoute";
@@ -17,10 +18,7 @@ export default function SearchTrip() {
       headers: { "Content-Type": "application/json" },
     };
 
-    fetch(
-      "https://ticket-booking-production.up.railway.app/route/getAllRoutes",
-      requestObj
-    )
+    fetch(`${requestUrl}route/getAllRoutes`, requestObj)
       .then((response) => response.json())
       .then((data) => {
         setList(data);

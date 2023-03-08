@@ -5,10 +5,59 @@ import {
   PersonOutlined,
   RouteOutlined,
 } from "@mui/icons-material";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { requestUrl } from "../../const/Const";
 import "./Widget.scss";
 
 const Widget = ({ type }) => {
+  const [dataUser, setDataUser] = useState([]);
+  const [dataRoute, setDataRoute] = useState([]);
+  const [dataTrip, setDataTrip] = useState([]);
+  const [dataVehicle, setDataVehicle] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(`${requestUrl}users/getAllUser`, {
+        method: "POST",
+      });
+      result.json().then((json) => {
+        setDataUser(json);
+      });
+    };
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(`${requestUrl}route/getAllRoutes`, {
+        method: "POST",
+      });
+      result.json().then((json) => {
+        setDataRoute(json);
+      });
+    };
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(`${requestUrl}trip/getAllTrip`, {
+        method: "POST",
+      });
+      result.json().then((json) => {
+        setDataTrip(json);
+      });
+    };
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(`${requestUrl}vehicle/getAllVehicle`, {
+        method: "POST",
+      });
+      result.json().then((json) => {
+        setDataVehicle(json);
+      });
+    };
+    fetchData();
+  }, []);
   let data;
 
   //temporary
@@ -21,6 +70,7 @@ const Widget = ({ type }) => {
         title: "USERS",
         isMoney: false,
         link: "See all users",
+        amount: dataUser.length,
         icon: (
           <PersonOutlined
             className="icon"
@@ -37,6 +87,7 @@ const Widget = ({ type }) => {
         title: "ROUTES",
         isMoney: false,
         link: "View all routes",
+        amount: dataRoute.length,
         icon: (
           <RouteOutlined
             className="icon"
@@ -53,6 +104,7 @@ const Widget = ({ type }) => {
         title: "TRIPS",
         isMoney: false,
         link: "View all trips",
+        amount: dataTrip.length,
         icon: (
           <DepartureBoardOutlined
             className="icon"
@@ -66,6 +118,7 @@ const Widget = ({ type }) => {
         title: "VEHICLE",
         isMoney: false,
         link: "See details",
+        amount: dataVehicle.length,
         icon: (
           <LocalShippingOutlined
             className="icon"
@@ -86,7 +139,7 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+          {data.isMoney && "$"} {data.amount}
         </span>
         <span className="link">{data.link}</span>
       </div>

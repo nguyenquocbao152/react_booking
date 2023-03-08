@@ -1,5 +1,6 @@
 import { Grid } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { requestUrl } from "../../const/Const";
 import Button from "../control/Button";
 import DatePicker from "../control/DatePicker";
 import Input from "../control/Input";
@@ -21,10 +22,9 @@ function TripForm(props) {
   const [route, setRoute] = useState([]);
   const [station, setStation] = useState([]);
   useEffect(() => {
-    const requestUrl =
-      "https://ticket-booking-production.up.railway.app/vehicle/getAllVehicle";
+    const requestUr = `${requestUrl}vehicle/getAllVehicle`;
     const fetchData = async () => {
-      const result = await fetch(requestUrl, {
+      const result = await fetch(requestUr, {
         method: "POST",
       });
       result.json().then((json) => {
@@ -34,10 +34,9 @@ function TripForm(props) {
     fetchData();
   }, []);
   useEffect(() => {
-    const requestUrl =
-      "https://ticket-booking-production.up.railway.app/route/getAllRoutes";
+    const requestUr = `${requestUrl}route/getAllRoutes`;
     const fetchData = async () => {
-      const result = await fetch(requestUrl, {
+      const result = await fetch(requestUr, {
         method: "POST",
       });
       result.json().then((json) => {
@@ -47,10 +46,9 @@ function TripForm(props) {
     fetchData();
   }, []);
   useEffect(() => {
-    const requestUrl =
-      "https://ticket-booking-production.up.railway.app/station/getAllStation";
+    const requestUr = `${requestUrl}station/getAllStation`;
     const fetchData = async () => {
-      const result = await fetch(requestUrl, {
+      const result = await fetch(requestUr, {
         method: "POST",
       });
       result.json().then((json) => {

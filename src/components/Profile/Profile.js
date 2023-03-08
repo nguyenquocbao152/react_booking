@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { requestUrl } from "../../const/Const";
 import "./Profile.css";
 
 export default function Profile() {
@@ -80,10 +81,7 @@ export default function Profile() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(useObj),
       };
-      fetch(
-        "https://ticket-booking-production.up.railway.app/users/updateUser",
-        reqObj
-      )
+      fetch(`${requestUrl}users/updateUser`, reqObj)
         .then((response) => response.json())
         .then((data) => {
           if (data.status === 200) {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Auth.css";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
+import { requestUrl } from "../../const/Const";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -112,10 +113,7 @@ export default function Register() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userRegisterObj),
       };
-      fetch(
-        "https://ticket-booking-production.up.railway.app/users/register",
-        requestObj
-      )
+      fetch(`${requestUrl}users/register`, requestObj)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);

@@ -2,9 +2,10 @@ import { SearchOutlined } from "@mui/icons-material";
 import { format, parseISO } from "date-fns";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
+import { requestUrl } from "../../const/Const";
 import TripForm from "../form/TripForm";
 import Popup from "../popup/Popup";
-const URL = "https://ticket-booking-production.up.railway.app/trip/getAllTrip";
+const URL = `${requestUrl}trip/getAllTrip`;
 const customStyles = {
   rows: {
     style: {
@@ -141,9 +142,8 @@ const TripTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(tri),
       };
-      const requestUrl =
-        "https://ticket-booking-production.up.railway.app/trip/createTrip";
-      fetch(requestUrl, requestObj).then((response) => {
+      const requestUr = `${requestUrl}trip/createTrip`;
+      fetch(requestUr, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Add trip successful");
           resetForm();
@@ -165,14 +165,13 @@ const TripTable = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     };
-    fetch(
-      `https://ticket-booking-production.up.railway.app/trip/deleteTrip?tripId=${id}`,
-      requestObj
-    ).then((response) => {
-      if (response.status === 200) {
-        alert("Delete trip successful");
+    fetch(`${requestUrl}trip/deleteTrip?tripId=${id}`, requestObj).then(
+      (response) => {
+        if (response.status === 200) {
+          alert("Delete trip successful");
+        }
       }
-    });
+    );
   };
   const handleChange = (e) => {
     const dateFormat =
@@ -186,9 +185,9 @@ const TripTable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        List All Trips
+        Danh Sách Chuyến Đi
         <div className="link" onClick={() => setOpenPopup(true)}>
-          Add New
+          Thêm Mới
         </div>
       </div>
       <div className="search">

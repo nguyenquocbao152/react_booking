@@ -5,6 +5,9 @@ import "./Header.css";
 export default function Header() {
   const navigate = useNavigate();
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
+  const [admin, setAdmin] = useState(
+    JSON.parse(sessionStorage.getItem("admin"))
+  );
   const [contentProfile, setContentProfile] = useState(
     <li className="nav-item profile">
       <li className="nav-item log-in">
@@ -22,13 +25,18 @@ export default function Header() {
 
   const logout = () => {
     sessionStorage.removeItem("user");
+    sessionStorage.removeItem("admin");
     navigate("/");
     window.location.reload(false);
   };
 
   useEffect(() => {
-    setContentProfile(getProfile(user));
-  }, [user]);
+    if (user) {
+      setContentProfile(getProfile(user));
+    } else {
+      setContentProfile(getProfileAdmin(admin));
+    }
+  }, []);
 
   const getProfile = (user) => {
     if (user) {
@@ -37,6 +45,53 @@ export default function Header() {
           <NavLink className="nav-link profile-content">
             <i className="far fa-user"></i>&nbsp;
             {user.fullname}&nbsp;
+          </NavLink>
+          <ul className="extra-nav">
+            <NavLink className="nav-link profile-content-item" to="/profile">
+              Thông tin
+            </NavLink>
+            <NavLink
+              className="nav-link profile-content-item"
+              to="/historyTicket"
+            >
+              Lịch sử đặt vé
+            </NavLink>
+            <NavLink className="nav-link profile-content-item" to="/password">
+              Thay đổi mật khẩu
+            </NavLink>
+            <a
+              className="nav-link profile-content-item .logout"
+              onClick={logout}
+            >
+              Đăng xuất
+            </a>
+          </ul>
+        </li>
+      );
+    } else {
+      return (
+        <>
+          <li className="nav-item log-in">
+            <NavLink className="nav-link" to="/login">
+              Đăng nhập
+            </NavLink>
+          </li>
+          <li className="nav-item sign-up">
+            <NavLink className="nav-link" to="/register">
+              Đăng ký
+            </NavLink>
+          </li>
+        </>
+      );
+    }
+  };
+  const getProfileAdmin = (admin) => {
+    if (admin) {
+      return (
+        <li className="nav-item profile">
+          <NavLink className="nav-link profile-content">
+            <i className="far fa-user"></i>&nbsp;
+            {admin.fullname}&nbsp;
           </NavLink>
           <ul className="extra-nav">
             <NavLink className="nav-link profile-content-item" to="/profile">

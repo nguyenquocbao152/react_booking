@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { requestUrl } from "../../const/Const";
 import "./TripList.css";
 
 export default function SpecialTrip() {
@@ -10,10 +11,7 @@ export default function SpecialTrip() {
       headers: { "Content-Type": "application/json" },
     };
 
-    fetch(
-      "https://ticket-booking-production.up.railway.app/route/getAllRoutes",
-      requestObj
-    )
+    fetch(`${requestUrl}route/getAllRoutes`, requestObj)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

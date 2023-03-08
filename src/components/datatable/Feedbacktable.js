@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
+import { requestUrl } from "../../const/Const";
 import FeedbackForm from "../form/FeedbackForm";
 import Popup from "../popup/Popup";
 
 import "./FeedTable.scss";
-const URL =
-  "https://ticket-booking-production.up.railway.app/feedback/getAllFeedBack";
+const URL = `${requestUrl}feedback/getAllFeedBack`;
 const FeedbackTable = () => {
   const [data, setData] = useState([]);
   const [user, setUser] = useState([]);
@@ -60,10 +60,9 @@ const FeedbackTable = () => {
     fetchData();
   }, []);
   useEffect(() => {
-    const requestUrl =
-      "https://ticket-booking-production.up.railway.app/users/getAllUser";
+    const requestUr = `${requestUrl}users/getAllUser`;
     const fetchData = async () => {
-      const result = await fetch(requestUrl, {
+      const result = await fetch(requestUr, {
         method: "POST",
       });
       result.json().then((json) => {
@@ -93,9 +92,8 @@ const FeedbackTable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(feeback),
       };
-      const requestUrl =
-        "https://ticket-booking-production.up.railway.app/feedback/updateFeedBack";
-      fetch(requestUrl, requestObj).then((response) => {
+      const requestUr = `${requestUrl}feedback/updateFeedBack`;
+      fetch(requestUr, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Response passenger successful");
         }

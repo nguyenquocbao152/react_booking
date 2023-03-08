@@ -1,11 +1,11 @@
 import { SearchOutlined } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
+import { requestUrl } from "../../const/Const";
 import VehicleForm from "../form/VehicleForm";
 import Popup from "../popup/Popup";
 import "./VehiclTable.scss";
-const URL =
-  "https://ticket-booking-production.up.railway.app/vehicle/getAllVehicle";
+const URL = `${requestUrl}vehicle/getAllVehicle`;
 const Vehicletable = () => {
   const [openPopup, setOpenPopup] = useState(false);
   const [data, setData] = useState([]);
@@ -94,9 +94,8 @@ const Vehicletable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(vehicl),
       };
-      const requestUrl =
-        "https://ticket-booking-production.up.railway.app/vehicle/createVehicle";
-      fetch(requestUrl, requestObj).then((response) => {
+      const requestUr = `${requestUrl}vehicle/createVehicle`;
+      fetch(requestUr, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Add vehicle successful");
           resetForm();
@@ -125,9 +124,8 @@ const Vehicletable = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(vehicl),
       };
-      const requestUrl =
-        "https://ticket-booking-production.up.railway.app/vehicle/updateVehicle";
-      fetch(requestUrl, requestObj).then((response) => {
+      const requestUr = `${requestUrl}vehicle/updateVehicle`;
+      fetch(requestUr, requestObj).then((response) => {
         if (response.status === 200) {
           alert("Update vehicle successful");
           resetForm();
@@ -144,7 +142,7 @@ const Vehicletable = () => {
       headers: { "Content-Type": "application/json" },
     };
     fetch(
-      `https://ticket-booking-production.up.railway.app/vehicle/deleteVehicle?vehicleId=${id}`,
+      `${requestUrl}vehicle/deleteVehicle?vehicleId=${id}`,
       requestObj
     ).then((response) => {
       if (response.status === 200) {
@@ -159,9 +157,9 @@ const Vehicletable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        List All Vehicle
+        Danh Sách Xe
         <div className="link" onClick={() => setOpenPopup(true)}>
-          Add New
+          Thêm Mới
         </div>
       </div>
       <div className="search">

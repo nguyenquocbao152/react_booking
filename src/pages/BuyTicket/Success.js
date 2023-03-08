@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { requestUrl } from "../../const/Const";
 
 export default function Success() {
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
@@ -34,10 +35,7 @@ export default function Success() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dataObj),
     };
-    fetch(
-      "https://ticket-booking-production.up.railway.app/ticket/createTicket",
-      reqObj
-    )
+    fetch(`${requestUrl}ticket/createTicket`, reqObj)
       .then((response) => response.json())
       .then((data) => {
         setMessage(data.message);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { requestUrl } from "../../const/Const";
 import "./Auth.css";
 
 export default function Login() {
@@ -30,17 +31,22 @@ export default function Login() {
       body: JSON.stringify(userObj),
     };
 
-    fetch(
-      "https://ticket-booking-production.up.railway.app/users/login",
-      requestObj
-    )
+    fetch(`${requestUrl}users/login`, requestObj)
       .then((response) => response.json())
       .then((data) => {
+        console.log("login:", data);
         setMessage(data.message);
         console.log(data.message);
+        console.log("role:", data.data.role);
         if (data.status === 200) {
-          sessionStorage.setItem("user", JSON.stringify(data.data));
-          navigate("/");
+          if (data.data.role === "user") {
+            sessionStorage.setItem("user", JSON.stringify(data.data));
+            navigate("/");
+          }
+          if (data.data.role === "admin") {
+            sessionStorage.setItem("admin", JSON.stringify(data.data));
+            navigate("/admin");
+          }
           window.location.reload(false);
         }
       });
