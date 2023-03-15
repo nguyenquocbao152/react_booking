@@ -1,12 +1,40 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Contact.css";
 
 export default function Contact() {
-  const [fulName, setFullName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const navigate = useNavigate();
+  const [user] = useState(JSON.parse(sessionStorage.getItem("user")));
+  const [message, setMessage] = useState("");
+
+  const onHandleFeedback = (e) => {
+    setMessage(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (user) {
+      const feedbackObj = {
+        userId: user.userId,
+        message: message,
+        response: "",
+      };
+      const requestObj = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(feedbackObj),
+      };
+      fetch("http://localhost:8080/feedback/createFeedBack", requestObj)
+        .then((response) => response.json())
+        .then((data) => {
+          alert("Feedback đã được gửi");
+          window.location.reload(false);
+        });
+    } else {
+      navigate("/login");
+      window.scrollTo(0, 0);
+    }
+  };
 
   return (
     <div className="container contact">
@@ -26,67 +54,26 @@ export default function Contact() {
           <form className="form-contact">
             <div className="row m-4">
               <div className="col-4">
-                <label>Họ và tên:</label>
-              </div>
-              <div className="col-8">
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder="Nhập họ và tên"
-                />
-              </div>
-            </div>
-            <div className="row m-4">
-              <div className="col-4">
-                <label>Số điện thoại:</label>
-              </div>
-              <div className="col-8">
-                <input
-                  className="form-control"
-                  type="tel"
-                  placeholder="Nhập số điện thoại"
-                />
-              </div>
-            </div>
-            <div className="row m-4">
-              <div className="col-4">
-                <label>Email:</label>
-              </div>
-              <div className="col-8">
-                <input
-                  className="form-control"
-                  type="email"
-                  placeholder="Nhập email"
-                />
-              </div>
-            </div>
-            <div className="row m-4">
-              <div className="col-4">
-                <label>Tiêu đề:</label>
-              </div>
-              <div className="col-8">
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder="Nhập tiêu đề"
-                />
-              </div>
-            </div>
-            <div className="row m-4">
-              <div className="col-4">
-                <label>Nội dung:</label>
+                <label>Feedback:</label>
               </div>
               <div className="col-8">
                 <textarea
+                  required
                   className="form-control"
                   type="text"
-                  placeholder="Nhập nội dung"
+                  placeholder="Feedback ..."
+                  rows={10}
+                  onChange={onHandleFeedback}
                 />
               </div>
             </div>
             <div className="row m-4">
               <div className="col-12">
-                <button className="btn btn-secondary" type="submit">
+                <button
+                  onClick={handleSubmit}
+                  className="btn btn-secondary"
+                  type="submit"
+                >
                   Gửi
                 </button>
               </div>

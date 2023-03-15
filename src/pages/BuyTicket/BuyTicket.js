@@ -55,7 +55,7 @@ export default function BuyTicket() {
     fetch(`${requestUrl}trip/getAllTripByDate`, requestObj)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log("search trip:", data);
         setListTrip(data);
       });
   }, []);
