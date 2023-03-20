@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { requestUrl } from "../../const/Const";
 import "./Contact.css";
 
 export default function Contact() {
@@ -24,7 +25,7 @@ export default function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(feedbackObj),
       };
-      fetch("http://localhost:8080/feedback/createFeedBack", requestObj)
+      fetch(`${requestUrl}feedback/createFeedBack`, requestObj)
         .then((response) => response.json())
         .then((data) => {
           alert("Feedback đã được gửi");

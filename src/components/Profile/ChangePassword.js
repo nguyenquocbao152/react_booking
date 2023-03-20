@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { requestUrl } from "../../const/Const";
 
 export default function ChangePassword() {
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
@@ -57,7 +58,7 @@ export default function ChangePassword() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(changePassObj),
       };
-      fetch("http://localhost:8080/users/changePassword", requestObj)
+      fetch(`${requestUrl}users/changePassword`, requestObj)
         .then((response) => response.json())
         .then((data) => {
           if (data.status === 417) {

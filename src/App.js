@@ -6,6 +6,7 @@ import Register from "./components/Auth/Register";
 import Footer from "./components/Footer/Footer";
 import UserForm from "./components/form/UserForm";
 import Header from "./components/Header/Header";
+import TableTicket from "./components/historyTicket/table";
 import HomeUser from "./components/MainPage/Home";
 import ChangePassword from "./components/Profile/ChangePassword";
 import Profile from "./components/Profile/Profile";
@@ -52,6 +53,7 @@ function App() {
             <Route path="password" element={<ChangePassword />} />
             <Route path="buyTicket" element={<BuyTicket />}></Route>
             <Route path="buyTicketSuccess" element={<Success />}></Route>
+            <Route path="historyTicket" element={<TableTicket />}></Route>
             <Route path="form" element={<UserForm />} />
             <Route path="register/verify" element={<VerifyCode />} />
             <Route path="register/verify/success" element={<VerifySuccess />} />
