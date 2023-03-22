@@ -51,10 +51,10 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs(props) {
-  const { openPopup, setOpenPopup, dataTicket } = props;
+  const { openPopup, setOpenPopup, dataTicket, tripData } = props;
   const [open, setOpen] = React.useState(false);
   const [trip, setTrip] = React.useState(
-    JSON.parse(sessionStorage.getItem("trip"))
+    JSON.parse(sessionStorage.getItem("tripData"))
   );
 
   const handleClickOpen = () => {
@@ -87,18 +87,34 @@ export default function CustomizedDialogs(props) {
         </BootstrapDialogTitle>
         <DialogContent dividers ref={componentRef}>
           <Typography gutterBottom>Seat Number: {dataTicket.seatNo}</Typography>
-          <Typography gutterBottom>Vehicle Number:</Typography>
-          <Typography gutterBottom>Chuyến Đi: - {trip.arrival}</Typography>
           <Typography gutterBottom>
-            Date: {trip.date} Time: {trip.time}
+            Vehicle Number: {tripData.liencePlate}
           </Typography>
-          <Typography gutterBottom>Amount Paid: {trip.fare}</Typography>
+          <Typography gutterBottom>
+            Chuyến Đi: {tripData.from} - {tripData.arrival}
+          </Typography>
+          <Typography gutterBottom>
+            Date: {tripData.date} Time: {tripData.time}
+          </Typography>
+          <Typography gutterBottom>Amount Paid: {tripData.fare}</Typography>
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handlePrint}>
-            Print
-          </Button>
-        </DialogActions>
+        {dataTicket.status === "expired" ? (
+          <DialogActions>
+            <Button autoFocus className="bg-danger bg-gradient text-white">
+              Vé Hết Hạn
+            </Button>
+          </DialogActions>
+        ) : (
+          <DialogActions>
+            <Button
+              autoFocus
+              onClick={handlePrint}
+              className="bg-primary bg-gradient text-white"
+            >
+              In Vé
+            </Button>
+          </DialogActions>
+        )}
       </BootstrapDialog>
     </div>
   );

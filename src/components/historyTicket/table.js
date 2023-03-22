@@ -2,9 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { requestUrl } from "../../const/Const";
-import Popup from "../popup/Popup";
 import CustomizedDialogs from "../ticketpop/test";
-import TicketPop from "../ticketpop/TicketPop";
 import "./table.scss";
 const TableTicket = () => {
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
@@ -12,9 +10,20 @@ const TableTicket = () => {
   const [trip, setTrip] = useState([]);
   const [openPopup, setOpenPopup] = useState(false);
   const [ticketPop, setTicketPop] = useState(false);
-  const [tripData, setTripData] = React.useState(
-    JSON.parse(sessionStorage.getItem("trip"))
+  const [tripData, setTripData] = useState(
+    JSON.parse(sessionStorage.getItem("tripData"))
   );
+  const handleDate = (e) => {
+    var d = new Date(e),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  };
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(
@@ -56,14 +65,26 @@ const TableTicket = () => {
     if (trip.length > 0) {
       for (var i = 0; i < trip.length; i++) {
         if (tripId === trip[i].tripId) {
-          sessionStorage.setItem("trip", JSON.stringify(trip[i]));
+          sessionStorage.setItem("tripData", JSON.stringify(trip[i]));
           return trip[i].date;
         }
       }
     }
   };
+  const handleTrip = (tripId) => {
+    if (trip.length > 0) {
+      for (var i = 0; i < trip.length; i++) {
+        if (tripId === trip[i].tripId) {
+          console.log("tripMang: ", trip[i].tripId);
+          setTripData(trip[i]);
+        }
+      }
+    }
+  };
   const openInPopup = (item) => {
-    console.log("item:", item);
+    console.log("tripID: ", item.tripId);
+    handleTrip(item.tripId);
+    console.log("tripData: ", tripData);
     setTicketPop(item);
     setOpenPopup(true);
   };
@@ -76,10 +97,10 @@ const TableTicket = () => {
         <table className="table-users">
           <thead>
             <tr>
-              <th>Ticket Number</th>
-              <th>Booking Date</th>
-              <th>Trip Date</th>
-              <th>Status</th>
+              <th>Số Vé</th>
+              <th>Ngày Đặt Vé</th>
+              <th>Ngày Đi</th>
+              <th>Trạng Thái</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -92,7 +113,9 @@ const TableTicket = () => {
                   </div>
                 </td>
                 <td>
-                  <div className="whitespace-pre-wrap">{item.bookingDate}</div>
+                  <div className="whitespace-pre-wrap">
+                    {handleDate(item.bookingDate)}
+                  </div>
                 </td>
                 <td>{handleDataTrip(item.tripId)}</td>
                 <td>{item.status}</td>
@@ -121,7 +144,7 @@ const TableTicket = () => {
           openPopup={openPopup}
           setOpenPopup={setOpenPopup}
           dataTicket={ticketPop}
-          tripData={JSON.parse(sessionStorage.getItem("trip"))}
+          tripData={tripData}
         />
       ) : (
         ""

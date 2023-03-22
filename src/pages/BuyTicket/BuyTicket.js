@@ -16,6 +16,7 @@ export default function BuyTicket() {
   const [id, setId] = useState("");
 
   const nextStep = (id) => {
+    console.log("id:", id);
     setStep((currentStep) => Number(currentStep) + 1);
     setId(id);
   };
@@ -55,7 +56,7 @@ export default function BuyTicket() {
     fetch(`${requestUrl}trip/getAllTripByDate`, requestObj)
       .then((response) => response.json())
       .then((data) => {
-        console.log("search trip:", data);
+        console.log("search trip:", data.length);
         setListTrip(data);
       });
   }, []);
@@ -111,7 +112,7 @@ function ConfirmRoute() {
       <div className="row">
         <div className="col-sm-12">
           <h3 className="mt-4">
-            {context.listTrip[0].from} - {context.listTrip[0].arrival}
+            {context.listTrip[0]?.from} - {context.listTrip[0]?.arrival}
           </h3>
           <p>
             <i>{handleDate(searchParams.get("date").slice(0, 10))}</i>
