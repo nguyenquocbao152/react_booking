@@ -63,7 +63,7 @@ const Vehicletable = () => {
       });
       result.json().then((json) => {
         console.log("vehicle:", json);
-        setData(json);
+        setData(json.reverse());
         setFilteredVehicle(json);
       });
     };

@@ -3,6 +3,9 @@ import { requestUrl } from "../../const/Const";
 
 export default function ChangePassword() {
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
+  const [admin, setAdmin] = useState(
+    JSON.parse(sessionStorage.getItem("admin"))
+  );
 
   const [oldPass, setOldPass] = useState("");
   const [newPass, setNewPass] = useState("");
@@ -49,7 +52,7 @@ export default function ChangePassword() {
     let validated = validateData();
     if (validated) {
       const changePassObj = {
-        phoneNumber: user.phoneNumber,
+        phoneNumber: user != null ? user.phoneNumber : admin.phoneNumber,
         oldPassword: oldPass,
         newPassword: newPass,
       };
@@ -77,7 +80,9 @@ export default function ChangePassword() {
     <div className="container pass">
       <div className="row">
         <div className="col-sm-12">
-          <h3 className="title">Xin chào {user.fullname}</h3>
+          <h3 className="title">
+            Xin chào {user != null ? user.fullname : admin.fullname}
+          </h3>
           <p className="description-title">Thay đổi mật khẩu</p>
         </div>
       </div>

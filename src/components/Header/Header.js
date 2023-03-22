@@ -33,6 +33,7 @@ export default function Header() {
   useEffect(() => {
     if (user) {
       setContentProfile(getProfile(user));
+      console.log("admin: ", admin);
     } else {
       setContentProfile(getProfileAdmin(admin));
     }
@@ -97,12 +98,6 @@ export default function Header() {
             <NavLink className="nav-link profile-content-item" to="/profile">
               Thông tin
             </NavLink>
-            <NavLink
-              className="nav-link profile-content-item"
-              to="/historyTicket"
-            >
-              Lịch sử đặt vé
-            </NavLink>
             <NavLink className="nav-link profile-content-item" to="/password">
               Thay đổi mật khẩu
             </NavLink>
@@ -138,7 +133,7 @@ export default function Header() {
       <div className="row">
         <div className="col-lg-3 logo">
           <h2>
-            <NavLink to="/">
+            <NavLink to={user != null ? "/" : "/admin"}>
               <i className="fas fa-bus"></i>&nbsp; DT-Booking
             </NavLink>
           </h2>
@@ -147,7 +142,10 @@ export default function Header() {
           <nav className="navbar navbar-expand-sm p-0">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/">
+                <NavLink
+                  className="nav-link"
+                  to={user != null ? "/" : "/admin"}
+                >
                   Trang chủ
                 </NavLink>
               </li>

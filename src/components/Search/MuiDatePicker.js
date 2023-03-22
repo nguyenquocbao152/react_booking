@@ -20,7 +20,7 @@ export default function MuiDatePicker(props) {
     <Box sx={{ height: "1" }}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
-          disablePast={false}
+          disablePast={true}
           label="Chọn ngày"
           inputFormat="DD/MM/YYYY"
           labelFormat="DD/MM/YYYY"

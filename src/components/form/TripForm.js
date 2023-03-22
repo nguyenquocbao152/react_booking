@@ -87,7 +87,9 @@ function TripForm(props) {
     if (validate()) {
       if (validate()) {
         console.log("value:", values);
-        addOrEdit(values, resetForm);
+        let date = handleChange(values.date);
+        console.log("date: ", date);
+        //addOrEdit(values, resetForm);
       }
     }
   };
@@ -97,6 +99,15 @@ function TripForm(props) {
         ...recordForEdit,
       });
   }, [recordForEdit]);
+  const handleChange = (e) => {
+    const dateFormat =
+      e.getFullYear() +
+      "-" +
+      (e.getMonth() + 1).toString().padStart(2, "0") +
+      "-" +
+      e.getDate().toString().padStart(2, "0");
+    return dateFormat;
+  };
   return (
     <Form onSubmit={handleSubmit}>
       <Grid container>

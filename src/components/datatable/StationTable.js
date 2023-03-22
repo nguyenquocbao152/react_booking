@@ -66,11 +66,10 @@ const StationTable = () => {
       const result = await fetch(URL, {
         method: "POST",
       });
-      result.json().then((json) => {
-        console.log("station:", json);
-        setData(json);
-        setFilteredStation(json);
-      });
+      const dataS = await result.json();
+      console.log("data: ", dataS);
+      setData(dataS.reverse());
+      setFilteredStation(dataS);
     };
     fetchData();
   }, []);

@@ -71,7 +71,7 @@ const RouteTable = () => {
       });
       result.json().then((json) => {
         console.log("Route:", json);
-        setData(json);
+        setData(json.reverse());
         setFilteredRoute(json);
       });
     };

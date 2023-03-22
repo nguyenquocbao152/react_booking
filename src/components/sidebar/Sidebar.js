@@ -11,8 +11,15 @@ import {
   Route,
   Sell,
 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
-const Sidebar = () => {
+import { Link, Navigate, useNavigate } from "react-router-dom";
+function Sidebar() {
+  const navigate = useNavigate();
+  const logout = () => {
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("admin");
+    navigate("/");
+    window.location.reload(false);
+  };
   return (
     <div className="sidebar">
       <div className="top">
@@ -37,12 +44,6 @@ const Sidebar = () => {
               <span>Người dùng</span>
             </li>
           </Link>
-          <Link to="/admin/trips" style={{ textDecoration: "none" }}>
-            <li>
-              <DepartureBoard className="icon" />
-              <span>Chuyến Đi</span>
-            </li>
-          </Link>
           <Link to="/admin/routes" style={{ textDecoration: "none" }}>
             <li>
               <Route className="icon" />
@@ -61,6 +62,12 @@ const Sidebar = () => {
               <span>Bến</span>
             </li>
           </Link>
+          <Link to="/admin/trips" style={{ textDecoration: "none" }}>
+            <li>
+              <DepartureBoard className="icon" />
+              <span>Chuyến Đi</span>
+            </li>
+          </Link>
           <p className="title">User</p>
           <Link to="/admin/feedbacks" style={{ textDecoration: "none" }}>
             <li>
@@ -74,7 +81,7 @@ const Sidebar = () => {
               <span>Vé Xe</span>
             </li>
           </Link>
-          <li>
+          <li onClick={logout}>
             <ExitToApp className="icon" />
             <span>Đăng Xuất</span>
           </li>
@@ -82,6 +89,6 @@ const Sidebar = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Sidebar;

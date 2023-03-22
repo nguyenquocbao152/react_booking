@@ -105,7 +105,7 @@ const TripTable = () => {
       });
       result.json().then((json) => {
         console.log("trip:", json);
-        setData(json);
+        setData(json.reverse());
         setFilteredTrip(json);
       });
     };

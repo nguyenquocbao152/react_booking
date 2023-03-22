@@ -50,7 +50,7 @@ const Tickettable = () => {
         method: "POST",
       });
       result.json().then((json) => {
-        console.log(json);
+        console.log(json.reverse());
         setData(json);
       });
     };

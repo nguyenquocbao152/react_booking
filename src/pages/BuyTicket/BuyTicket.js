@@ -57,6 +57,7 @@ export default function BuyTicket() {
       .then((response) => response.json())
       .then((data) => {
         console.log("search trip:", data.length);
+        console.log("routeID:", searchParams.get("routeid"));
         setListTrip(data);
       });
   }, []);

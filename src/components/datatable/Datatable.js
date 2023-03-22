@@ -84,7 +84,7 @@ const Datatable = () => {
         method: "POST",
       });
       result.json().then((json) => {
-        setData(json);
+        setData(json.reverse());
         setFilteredUser(json);
       });
     };
